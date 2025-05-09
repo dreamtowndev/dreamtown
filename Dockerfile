@@ -9,9 +9,8 @@ WORKDIR /app/
 COPY . .
 
 RUN chmod +x /app/entrypoint.sh
-
 RUN pip install -r requirements.txt
 
-EXPOSE 8000
+RUN python manage.py collectstatic --noinput
 
-CMD ["python3", "manage.py", "runserver"]
+CMD ["gunicorn", "your_project_name.wsgi:application", "--bind", "0.0.0.0:8000"]
