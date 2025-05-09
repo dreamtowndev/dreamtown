@@ -13,4 +13,5 @@ RUN pip install -r requirements.txt
 
 RUN python manage.py collectstatic --noinput
 
-CMD ["gunicorn", "your_project_name.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "horilla.wsgi:application", "--bind", "0.0.0.0:8000"]
+
